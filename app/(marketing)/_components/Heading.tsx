@@ -26,7 +26,7 @@ const Heading = () => {
         </div>
       )}
       {isAuthenticated && !isLoading && (
-        <Button>
+        <Button asChild>
           <Link href='/documents'>
             Enter Jotion <ArrowRight className='ml-2 h-4 w-4' />
           </Link>
