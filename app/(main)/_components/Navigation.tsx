@@ -6,6 +6,7 @@ import { ChevronsLeft, MenuIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
+import UserItem from './UserItem'
 const Navigation = () => {
   const pathname = usePathname()
   const isMobile = useMediaQuery('(max-width: 768px)')
@@ -110,7 +111,7 @@ const Navigation = () => {
           <ChevronsLeft className='h-6 w-6' />
         </div>
         <div>
-          <p>Action items</p>
+          <UserItem />
         </div>
         <div className='mt-4'>
           <p>Documents</p>
