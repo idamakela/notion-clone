@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useUser } from '@clerk/clerk-react'
+import { SignOutButton, useUser } from '@clerk/clerk-react'
 
 const UserItem = () => {
   const { user } = useUser()
@@ -30,8 +30,40 @@ const UserItem = () => {
               {user?.fullName}&apos;s Jotion
             </span>
           </div>
+          <ChevronsLeftRight className='ml-2 h-4 w-4 rotate-90 text-muted-foreground' />
         </div>
       </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className='w-80'
+        align='start'
+        alignOffset={11}
+        forceMount
+      >
+        <div className='flex flex-col space-y-4 p-2'>
+          <p className='text-sm font-medium leading-none text-muted-foreground'>
+            {user?.emailAddresses[0].emailAddress}
+          </p>
+          <div className='flex items-center gap-x-2'>
+            <div className='rounded-md bg-secondary p-1'>
+              <Avatar className='h-8 w-8'>
+                <AvatarImage src={user?.imageUrl} />
+              </Avatar>
+            </div>
+            <div className='spaace-y-1'>
+              <p className='line-clamp-1 text-sm'>
+                {user?.fullName}&apos;s Jotion
+              </p>
+            </div>
+          </div>
+        </div>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          asChild
+          className='w-full cursor-pointer text-muted-foreground'
+        >
+          <SignOutButton>Log out</SignOutButton>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
     </DropdownMenu>
   )
 }
